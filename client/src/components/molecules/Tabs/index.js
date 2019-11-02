@@ -4,7 +4,7 @@ import Tab from "../../atoms/Tab";
 import { StyledTabList } from "./StyledTabs";
 
 const Tabs = React.memo(({ children }) => {
-  const [activeTab, setActiveTab] = useState(children[1].props.label);
+  const [activeTab, setActiveTab] = useState(children[0].props.label);
 
   const onClickTabItem = useCallback(tab => {
     setActiveTab(tab);
