@@ -5,10 +5,20 @@ import "./App.css";
 import Tabs from "./components/molecules/Tabs";
 import TextField from "./components/atoms/TextField";
 
+function fibonacci(n) {
+  if (n === 1) {
+    return 0;
+  } else if (n === 2) {
+    return 1;
+  } else {
+    return fibonacci(n - 1) + fibonacci(n - 2);
+  }
+}
 function App() {
   const [result1, setResult1] = useState({ __html: "" });
   const [result2, setResult2] = useState({ __html: "" });
   const [result3, setResult3] = useState({ __html: "" });
+  const [result4, setResult4] = useState({ __html: "" });
 
   const test1 = value => {
     let tempResult = "";
@@ -77,6 +87,22 @@ function App() {
     setResult3(tempResult);
   };
 
+  const test4 = value => {
+    let tempResult = "";
+    let hasil = 0;
+    let counter = 2;
+    let tempHasil = "";
+    while (hasil < value) {
+      if (hasil > 0) {
+        tempHasil += `${hasil}<br />`;
+      }
+      hasil = fibonacci(counter);
+      counter++;
+    }
+    tempResult = { __html: tempHasil };
+    setResult4(tempResult);
+  };
+
   const onChange = useCallback((id, fill) => {
     if (id === "test1") {
       test1(fill);
@@ -84,6 +110,8 @@ function App() {
       test2(fill);
     } else if (id === "test3") {
       test3(fill);
+    } else if (id === "test4") {
+      test4(fill);
     }
   }, []);
 
@@ -137,6 +165,22 @@ function App() {
               justifyContent: "center"
             }}
             dangerouslySetInnerHTML={result3}
+          ></div>
+        </div>
+        <div label="Test 4">
+          <TextField
+            onChange={e => onChange("test4", e.target.value)}
+            placeholder="Input your number"
+            type="number"
+          ></TextField>
+          <div
+            style={{
+              fontSize: "24px",
+              textAlign: "left",
+              display: "flex",
+              justifyContent: "center"
+            }}
+            dangerouslySetInnerHTML={result4}
           ></div>
         </div>
       </Tabs>
