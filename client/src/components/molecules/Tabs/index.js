@@ -6,14 +6,10 @@ import { StyledTabList } from "./StyledTabs";
 const Tabs = React.memo(({ children }) => {
   const [activeTab, setActiveTab] = useState(children[1].props.label);
 
-  const onClickTabItem = tab => {
+  const onClickTabItem = useCallback(tab => {
     setActiveTab(tab);
-  };
-  // const onClickTabItem = useCallback(tab => {
-  //   setActiveTab(tab);
-  // }, []);
+  }, []);
 
-  console.log("tutut");
   return (
     <div className="tabs">
       <StyledTabList>
