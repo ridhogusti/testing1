@@ -8,6 +8,7 @@ import TextField from "./components/atoms/TextField";
 function App() {
   const [result1, setResult1] = useState({ __html: "" });
   const [result2, setResult2] = useState({ __html: "" });
+  const [result3, setResult3] = useState({ __html: "" });
 
   const test1 = value => {
     let tempResult = "";
@@ -50,11 +51,39 @@ function App() {
     setResult2(tempResult);
   };
 
+  const test3 = value => {
+    let tempResult = "";
+    let tempStar = "";
+    let tempValue = Math.ceil(value / 2);
+    for (let i = 1; i <= tempValue; i++) {
+      for (let j = 0; j < tempValue - i; j++) {
+        tempStar += "&nbsp;";
+      }
+      for (let j = 0; j < 2 * i - 1; j++) {
+        tempStar += "*";
+      }
+      tempStar = `${tempStar}<br />`;
+    }
+    for (let i = 1; i <= tempValue; i++) {
+      for (let j = 0; j < i - 1; j++) {
+        tempStar += "&nbsp;";
+      }
+      for (let j = 0; j < 2 * (tempValue - i) + 1; j++) {
+        tempStar += "*";
+      }
+      tempStar = `${tempStar}<br />`;
+    }
+    tempResult = { __html: tempStar };
+    setResult3(tempResult);
+  };
+
   const onChange = useCallback((id, fill) => {
     if (id === "test1") {
       test1(fill);
     } else if (id === "test2") {
       test2(fill);
+    } else if (id === "test3") {
+      test3(fill);
     }
   }, []);
 
@@ -70,7 +99,10 @@ function App() {
           ></TextField>
           <div
             style={{
-              fontSize: "24px"
+              fontSize: "24px",
+              textAlign: "left",
+              display: "flex",
+              justifyContent: "center"
             }}
             dangerouslySetInnerHTML={result1}
           ></div>
@@ -83,13 +115,29 @@ function App() {
           ></TextField>
           <div
             style={{
-              fontSize: "24px"
+              fontSize: "24px",
+              textAlign: "left",
+              display: "flex",
+              justifyContent: "center"
             }}
             dangerouslySetInnerHTML={result2}
           ></div>
         </div>
-        <div label="Sarcosuchus">
-          Nothing to see here, this tab is <em>extinct</em>!
+        <div label="Test 3">
+          <TextField
+            onChange={e => onChange("test3", e.target.value)}
+            placeholder="Input your number"
+            type="number"
+          ></TextField>
+          <div
+            style={{
+              fontSize: "24px",
+              textAlign: "left",
+              display: "flex",
+              justifyContent: "center"
+            }}
+            dangerouslySetInnerHTML={result3}
+          ></div>
         </div>
       </Tabs>
     </div>
