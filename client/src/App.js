@@ -3,7 +3,7 @@ import "./App.css";
 
 // import component
 import Tabs from "./components/molecules/Tabs";
-import TextField from "./components/atoms/TextField";
+import Testing from "./components/molecules/Testing";
 
 function fibonacci(n) {
   if (n === 1) {
@@ -120,68 +120,16 @@ function App() {
       <h1>Testing</h1>
       <Tabs>
         <div label="Test 1">
-          <TextField
-            onChange={e => onChange("test1", e.target.value)}
-            placeholder="Input your number"
-            type="number"
-          ></TextField>
-          <div
-            style={{
-              fontSize: "24px",
-              textAlign: "left",
-              display: "flex",
-              justifyContent: "center"
-            }}
-            dangerouslySetInnerHTML={result1}
-          ></div>
+          <Testing onChange={onChange} name="test1" result={result1}></Testing>
         </div>
         <div label="Test 2">
-          <TextField
-            onChange={e => onChange("test2", e.target.value)}
-            placeholder="Input your number"
-            type="number"
-          ></TextField>
-          <div
-            style={{
-              fontSize: "24px",
-              textAlign: "left",
-              display: "flex",
-              justifyContent: "center"
-            }}
-            dangerouslySetInnerHTML={result2}
-          ></div>
+          <Testing onChange={onChange} name="test2" result={result2}></Testing>
         </div>
         <div label="Test 3">
-          <TextField
-            onChange={e => onChange("test3", e.target.value)}
-            placeholder="Input your number"
-            type="number"
-          ></TextField>
-          <div
-            style={{
-              fontSize: "24px",
-              textAlign: "left",
-              display: "flex",
-              justifyContent: "center"
-            }}
-            dangerouslySetInnerHTML={result3}
-          ></div>
+          <Testing onChange={onChange} name="test3" result={result3}></Testing>
         </div>
         <div label="Test 4">
-          <TextField
-            onChange={e => onChange("test4", e.target.value)}
-            placeholder="Input your number"
-            type="number"
-          ></TextField>
-          <div
-            style={{
-              fontSize: "24px",
-              textAlign: "left",
-              display: "flex",
-              justifyContent: "center"
-            }}
-            dangerouslySetInnerHTML={result4}
-          ></div>
+          <Testing onChange={onChange} name="test4" result={result4}></Testing>
         </div>
       </Tabs>
     </div>
