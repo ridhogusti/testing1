@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 /**
   * Issues a mongodb findAndModify update command.
@@ -12,7 +12,8 @@ const mongoose = require('mongoose');
 */
 
 // Build the connection string
-const dbURI = process.env.HOST_NAME;
+const dbURI =
+  "mongodb+srv://admin:admin@development-ohijf.mongodb.net/example?retryWrites=true&w=majority";
 const db = mongoose.connection;
 
 const options = {
@@ -28,7 +29,7 @@ const options = {
   // connectTimeoutMS: 10000, // Give up initial connection after 10 seconds
   // socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
   family: 4, // Use IPv4, skip trying IPv6
-  keepAlive: true,
+  keepAlive: true
 };
 
 // Create the database connection
@@ -38,30 +39,30 @@ mongoose.Promise = global.Promise;
 // CONNECTION EVENTS
 // When successfully connected
 db.on(
-  'connected',
+  "connected",
   console.log.bind(
     console,
-    `✔ Mongoose default connection open to database ${process.env.NODE_ENV}`,
-  ),
+    `✔ Mongoose default connection open to database dev`
+  )
 );
 
 // If the connection throws an error
 db.on(
-  'error',
-  console.error.bind(console, 'Mongoose default connection error'),
+  "error",
+  console.error.bind(console, "Mongoose default connection error")
 );
 
 // When the connection is disconnected
 db.on(
-  'disconnected',
-  console.log.bind(console, 'Mongoose default connection disconnected'),
+  "disconnected",
+  console.log.bind(console, "Mongoose default connection disconnected")
 );
 
 // If the Node process ends, close the Mongoose connection
-process.on('SIGINT', () => {
+process.on("SIGINT", () => {
   db.close(() => {
     console.log(
-      'Mongoose default connection disconnected through app termination',
+      "Mongoose default connection disconnected through app termination"
     );
     process.exit(0);
   });
