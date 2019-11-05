@@ -10,7 +10,7 @@
     npm install
     npm run dev
 
-## Intermediate and Advance Test (3) Unit Test
+## Unit Testing Api
 
     cd bizzy-assignment
     npm install
