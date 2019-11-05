@@ -4,7 +4,7 @@ const http = require("http");
 const app = require("./app");
 
 // localhost port
-const port = normalizePort(8083 || 3001);
+const port = normalizePort(process.env.PORT || 3001);
 
 // server instance
 const server = http.createServer(app);
@@ -60,3 +60,5 @@ function onListening() {
   var bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
   console.log(`\n✔ App listening on ${bind}`);
 }
+
+module.exports = server;
