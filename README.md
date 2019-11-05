@@ -9,3 +9,9 @@
     cd bizzy-assignment
     npm install
     npm run dev
+
+## Unit Testing Api
+
+    cd bizzy-assignment
+    npm install
+    npm run test
